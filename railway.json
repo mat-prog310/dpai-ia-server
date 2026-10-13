@@ -1,9 +1,9 @@
 {
-  "services": {
-    "ai": {
-      "start": "cd my_local_ai && gunicorn -b 0.0.0.0:$PORT api_server:app",
-      "installDependencies": true,
-      "buildCommand": "cd my_local_ai && pip install -r requirements.txt"
-    }
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": {
+    "builder": "RAILPACK"
+  },
+  "deploy": {
+    "startCommand": "gunicorn -b 0.0.0.0:${PORT:-8000} --timeout 120 api_server:app"
   }
 }
